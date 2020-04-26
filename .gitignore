@@ -2,7 +2,7 @@
 /.dir-locals.el
 
 # Top level excludes
-/Makefile
+/Makefile.orig
 /MINFO
 /TABLE
 /*.pc
@@ -13,6 +13,11 @@
 /tmp.*
 /configdata.pm
 
+# *all* Makefiles
+Makefile
+# ... except in demos
+!/demos/*/Makefile
+
 # Links under apps
 /apps/CA.pl
 /apps/tsget
@@ -21,20 +26,10 @@
 
 # Auto generated headers
 /crypto/buildinf.h
-/include/crypto/*_conf.h
-/include/openssl/configuration.h
-/include/openssl/opensslv.h
-
-# Auto generated doc files
-doc/man1/openssl-*.pod
-
-# Auto generated der files
-providers/common/der/der_dsa.c
-providers/common/der/der_ec.c
-providers/common/der/der_rsa.c
-providers/common/include/prov/der_dsa.h
-providers/common/include/prov/der_ec.h
-providers/common/include/prov/der_rsa.h
+/apps/progs.h
+/crypto/include/internal/*_conf.h
+/openssl/include/opensslconf.h
+/util/domd
 
 # error code files
 /crypto/err/openssl.txt.old
@@ -65,15 +60,10 @@ providers/common/include/prov/der_rsa.h
 /test/versions
 /test/ossl_shim/ossl_shim
 /test/rsa_complex
-/test/confdump
-/test/bio_prefix_text
 
 # Certain files that get created by tests on the fly
-/test-runs
+/test/test-runs
 /test/buildtest_*
-/test/provider_internal_test.cnf
-/test/fipsmodule.cnf
-/providers/fipsmodule.cnf
 
 # Fuzz stuff.
 # Anything without an extension is an executable on Unix, so we keep files
@@ -86,16 +76,14 @@ providers/common/include/prov/der_rsa.h
 !/fuzz/*.*
 
 # Misc auto generated files
-/doc/man7/openssl_user_macros.pod
+/include/openssl/opensslconf.h
 /tools/c_rehash
 /tools/c_rehash.pl
 /util/shlib_wrap.sh
 /tags
 /TAGS
-*.map
-*.ld
-/apps/progs.c
-/apps/progs.h
+/libcrypto.map
+/libssl.map
 
 # Windows (legacy)
 /tmp32
@@ -108,6 +96,7 @@ providers/common/include/prov/der_rsa.h
 /out32dll.dbg
 /inc32
 /MINFO
+/ms/.rnd
 /ms/bcb.mak
 /ms/libeay32.def
 /ms/nt.mak
@@ -140,10 +129,6 @@ providers/common/include/prov/der_rsa.h
 /test/fips_shatest.c
 /test/fips_test_suite.c
 /test/shatest.c
-
-# Generated docs directories
-/doc/html
-/doc/man
 
 ##### Generic patterns
 # Auto generated assembly language source files
@@ -193,7 +178,6 @@ Makefile.save
 *.bak
 cscope.*
 *.d
-*.d.tmp
 pod2htmd.tmp
 
 # Windows manifest files
