@@ -1,0 +1,10 @@
+
+1.build options for only support TLS1.2:
+
+
+./config -no-ssl -no-tls1 -no-tls1_1 -no-tls1_3  
+make
+
+
+2. test method
+ excute  "python3 -m sslyze  --regular 192.168.6.220:443"  on 172.16.166.91 (linux server of test group)
